@@ -30,7 +30,8 @@ export class VagaEntity {
     idRecrutador: string;
 
     @Column({
-        name: "max_candidatos"
+        name: "max_candidatos",
+        nullable: true
     })
     maxCandidatos: number;
 

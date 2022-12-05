@@ -62,7 +62,7 @@ export class UsuarioModel {
         return {
             id: this._id,
             nome: this._nome,
-            senha: this._senha,
+            username: this._username,
             tipo: this._tipo,
             empresa: this._empresa
         }
@@ -74,7 +74,7 @@ export class UsuarioModel {
         username: string,
         senha: string,
         tipo: string,
-        empresa: string
+        empresa?: string
     ) {
         const usuario = new UsuarioModel(nome, username, senha, tipo, empresa);
         usuario._id = id;

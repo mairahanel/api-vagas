@@ -22,7 +22,9 @@ export class UserEntity {
     @Column()
     senha: string;
 
-    @Column()
+    @Column({
+        length: 1
+    })
     tipo: string;
 
     @Column({

@@ -1,4 +1,5 @@
 import { v4 as createUuid } from 'uuid';
+import { UsuarioModel } from './usuario.model';
 
 export class VagaModel {
 
@@ -9,7 +10,7 @@ export class VagaModel {
         private _empresa: string,
         private _dtLimite: Date,
         private _indAtivo: boolean,
-        private _idRecrutador: string,
+        private _recrutador: UsuarioModel,
         private _maxCandidatos?: number
     ) {
         this._id = createUuid();
@@ -50,13 +51,13 @@ export class VagaModel {
     public set indAtivo(indAtivo: boolean) {
         this._indAtivo = indAtivo;
     }
-    
-    public get idRecrutador() {
-        return this._idRecrutador;
+
+    public get recrutador() {
+        return this._recrutador;
     }
 
-    public set idRecrutador(id: string) {
-        this._idRecrutador = id;
+    public set recrutador(recrutador: UsuarioModel) {
+        this._recrutador = recrutador;
     }
 
     public get maxCandidatos(): number | undefined {
@@ -74,7 +75,7 @@ export class VagaModel {
             empresa: this._empresa,
             dtLimite: this._dtLimite,
             indAtivo: this._indAtivo,
-            idRecrutador: this._idRecrutador,
+            recrutador: this._recrutador,
             maxCandidatos: this._maxCandidatos
         }
     }
@@ -85,10 +86,10 @@ export class VagaModel {
         empresa: string,
         dtLimite: Date,
         indAtivo: boolean,
-        idRecrutador: string,
+        recrutador: UsuarioModel,
         maxCandidatos?: number
     ) {
-        const vaga = new VagaModel(descricao, empresa, dtLimite, indAtivo, idRecrutador, maxCandidatos);
+        const vaga = new VagaModel(descricao, empresa, dtLimite, indAtivo, recrutador, maxCandidatos);
         vaga._id = id;
 
         return vaga;

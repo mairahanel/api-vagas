@@ -10,6 +10,6 @@ export default new DataSource ({
     },
     synchronize: false,
     schema: "public",
-    entities: ["app/shared/entities/**/*.ts"],  
-    migrations: ["app/shared/migrations/**/*.ts"]
+    entities: ["src/app/shared/entities/**/*.ts"],  
+    migrations: ["src/app/shared/migrations/**/*.ts"]
 })
