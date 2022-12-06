@@ -6,6 +6,8 @@ export const recrutadorRoutes = () => {
     const router = Router();
 
     router.post("/", [createRecrutadorValidator], new RecrutadorController().create);
+    router.get("/",  new RecrutadorController().list);
+
 
     return router;
 }

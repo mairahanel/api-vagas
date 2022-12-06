@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import { usuarioRoute } from '../server/express.routes';
 
 export const createServer = () => {
     
@@ -8,7 +7,5 @@ export const createServer = () => {
     app.use(express.json());
     app.use(cors());
     
-    app.use('/', usuarioRoute);
-
     return app;
 }

@@ -20,6 +20,14 @@ export class UserRepository {
         return this.mapEntityToModel(result);
     }
 
+    public async find(tipo?: string) {
+        const result = await this.repository.findBy({tipo});
+
+        return result.map(item => {
+            return this.mapEntityToModel(item);
+        })
+    }
+
     private mapEntityToModel(userEntity: UserEntity) {
         const user = UsuarioModel.create(
             userEntity.id,
