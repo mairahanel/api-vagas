@@ -28,6 +28,19 @@ export class UserRepository {
         })
     }
 
+    public async findByUsernamePassword(username: string, senha: string) {
+        const result = await this.repository.findOneBy({
+            username,
+            senha
+        });
+
+        if(!result) {
+            return null
+        }
+
+        return this.mapEntityToModel(result);
+    }
+
     private mapEntityToModel(userEntity: UserEntity) {
         const user = UsuarioModel.create(
             userEntity.id,
