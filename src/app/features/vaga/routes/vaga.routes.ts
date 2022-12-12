@@ -1,4 +1,5 @@
 import { Request, Response, Router } from "express"
+import { checkLoginCandidatoMiddleware } from "../../candidato/middlewares/check-login-candidato.middleware";
 import { checkLoginMiddleware } from "../../login/middlewares/check-login.middleware";
 import { checkLoginRecrutadorMiddleware } from "../../recrutador/middlewares/check-login-recrutador.middleware";
 import { VagaController } from "../controllers/vaga.controller";
@@ -9,6 +10,8 @@ export const vagaRoutes = () => {
 
     router.post("/", [checkLoginMiddleware, checkLoginRecrutadorMiddleware, createVagaValidator], 
     new VagaController().create);
+
+    router.post("/apply/:idVaga", [checkLoginMiddleware, checkLoginCandidatoMiddleware], new VagaController().apply);
 
     return router;
 }

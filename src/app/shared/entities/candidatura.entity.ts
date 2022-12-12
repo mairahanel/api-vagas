@@ -26,13 +26,17 @@ export class CandidaturaEntity {
     })
     dtCandidatura: Date;
 
-    @ManyToOne(() => UserEntity)
+    @ManyToOne(() => UserEntity, {
+        eager: true
+    })
     @JoinColumn({
         name: "id_candidato"
     })
     candidato: UserEntity;
 
-    @ManyToOne(() => VagaEntity)
+    @ManyToOne(() => VagaEntity, {
+        eager: true
+    })
     @JoinColumn({
         name: "id_vaga"
     })
