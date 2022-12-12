@@ -75,8 +75,8 @@ export class VagaModel {
             empresa: this._empresa,
             dtLimite: this._dtLimite,
             indAtivo: this._indAtivo,
-            recrutador: this._recrutador,
-            maxCandidatos: this._maxCandidatos
+            maxCandidatos: this._maxCandidatos,
+            recrutador: this._recrutador.toJson(),
         }
     }
 

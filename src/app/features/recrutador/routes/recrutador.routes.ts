@@ -8,7 +8,7 @@ import { createRecrutadorValidator } from "../validators/create-recrutador.valid
 export const recrutadorRoutes = () => {
     const router = Router();
 
-    router.post("/", [createRecrutadorValidator, checkDuplicateRecrutadorValidator], new RecrutadorController().create);
+    router.post("/", /* [createRecrutadorValidator, checkDuplicateRecrutadorValidator], */ new RecrutadorController().create);
     router.get("/",  new RecrutadorController().list);
 
     router.post("/vaga", [checkLoginMiddleware, checkLoginRecrutadorMiddleware], (req: Request, res: Response) => {
@@ -16,7 +16,6 @@ export const recrutadorRoutes = () => {
             message: "vaga criada"
         })
     });
-
 
     return router;
 }
