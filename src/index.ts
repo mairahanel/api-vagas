@@ -1,8 +1,7 @@
-import { appEnv } from "./app/envs/app.env";
+import { CacheConnection } from "./main/database/cache.connection";
 import { DatabaseConnection } from "./main/database/typeorm.connection";
 import { runServer } from "./main/server/express.server";
 
-
-DatabaseConnection.connect().then(() => {
+Promise.all([DatabaseConnection.connect(), CacheConnection.connect()]).then(() => {
     runServer();
-});
+})
