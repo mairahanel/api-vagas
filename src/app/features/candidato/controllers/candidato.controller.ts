@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import { CacheRepository } from "../../../shared/repositories/cache.repository";
+import { UserRepository } from "../../user/repositories/user.repository";
 import { CreateCandidatoUsecase } from "../usecases/create-candidato.usecase";
 import { ListCandidatosUsecase } from "../usecases/list-candidato.usecase";
 
@@ -31,7 +33,7 @@ export class CandidatoController {
 
     public async list(req: Request, res: Response) {
         try {
-            const usecase = new ListCandidatosUsecase();
+            const usecase = new ListCandidatosUsecase(new UserRepository, new CacheRepository);
             const result = await usecase.execute();
 
             return res.status(200).send({
