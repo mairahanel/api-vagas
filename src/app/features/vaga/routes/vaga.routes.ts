@@ -13,5 +13,7 @@ export const vagaRoutes = () => {
 
     router.post("/apply/:idVaga", [checkLoginMiddleware, checkLoginCandidatoMiddleware], new VagaController().apply);
 
+    router.get("/:idRecrutador", new VagaController().list);
+
     return router;
 }

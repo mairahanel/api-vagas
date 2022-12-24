@@ -26,7 +26,7 @@ export class CandidaturaRepository {
         return this.mapEntityToModel(result!);
     }
 
-    public async get(idCandidato: string, idVaga: string) {
+    public async get(idCandidato?: string, idVaga?: string) {
         const result = await this.repository.findOneBy({
             idCandidato,
             idVaga
@@ -37,6 +37,22 @@ export class CandidaturaRepository {
         }
 
         return this.mapEntityToModel(result);
+    }
+
+    public async list(idCandidato?: string) {
+        const result = await this.repository.findBy({
+            idCandidato,
+        });
+
+        if(!result) {
+            return null;
+        }
+
+        const candidaturas = result.map((item) => {
+            return this.mapEntityToModel(item)
+        });
+
+        return candidaturas;
     }
 
     private mapEntityToModel(entity: CandidaturaEntity) {

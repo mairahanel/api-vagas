@@ -25,12 +25,17 @@ export class CandidaturaModel {
         return this._dtCandidatura;
     }
 
+    public get recrutador() {
+        return this._vaga.recrutador.toJson();
+    }
+
     public toJson() {
         return {
-            candidato: this._candidato.toJson(),
+            //candidato: this._candidato.toJson(),
             vaga: this._vaga.toJson(),
             indSucesso: this._indSucesso,
-            dtCandidatura: this._dtCandidatura
+            dtCandidatura: this._dtCandidatura,
+            recrutador: this._vaga.recrutador.toJson()
         }
     }
 }

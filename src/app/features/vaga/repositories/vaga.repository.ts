@@ -38,6 +38,21 @@ export class VagaRepository {
         return this.mapEntityToModel(result);
     }
 
+    public async list(idRecrutador: string) {
+        const result = await this.repository.findBy({
+            idRecrutador        
+        });
+
+        if(!result) {
+            return null;
+        }
+
+        const vagas = result.map((item) => {
+            return this.mapEntityToModel(item)
+        });
+
+        return vagas;
+    }
     
     private mapEntityToModel(vagaEntity: VagaEntity) {
         const recrutador = UsuarioModel.create(
